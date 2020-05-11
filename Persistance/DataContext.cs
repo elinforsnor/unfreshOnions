@@ -11,6 +11,7 @@ namespace Persistance
         }
 
         public DbSet<Value> Values { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder Builder) 
         {
