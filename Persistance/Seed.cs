@@ -1,48 +1,47 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Xml;
 using Domain;
 
 namespace Persistance
 {
-    public class Seed
-    {
-        public static void SeedData(DataContext context) 
-        {
-            if(!context.Movies.Any())
-            {
-                var movies = new List<Movie>
-                {
-                    new Movie {
-                        Title = "Goosebumps",
-                        Description = "A teenager teams up with the daughter of young adult horror author R.L. Stine after the writer's imaginary demons are set free on the town of Madison, Delaware.",
-                        Length = 103,
-                        Year = 2015,
-                        Genre = "Action, Adventure, Comedy",
-                        HasSeen = true,
-                        IsFavourite = false
-                    },
-                     new Movie {
-                        Title = "The Martian",
-                        Description = "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.",
-                        Length = 144,
-                        Year = 2015,
-                        Genre = "Adventure, Drama, Sci-Fi",
-                        HasSeen = false,
-                        IsFavourite = true
-                    },
-                     new Movie {
-                        Title = "Bridge of Spies",
-                        Description = "An American lawyer is recruited by the CIA during the Cold War to help rescue a pilot detained in the Soviet Union.",
-                        Length = 141,
-                        Year = 2015,
-                        Genre = "Biography, Drama, History",
-                        HasSeen = false,
-                        IsFavourite = false
-                    }
-                };
-                context.Movies.AddRange(movies);
-                context.SaveChanges();
-            }
-        }
-    }
+	public class Seed
+	{
+		public static void SeedData(DataContext context)
+		{
+			if (!context.Movies.Any())
+			{
+				XmlReader xmlFile;
+
+				xmlFile = XmlReader.Create("/Users/elin/Desktop/Omegapoint/unfreshOnions/Persistance/movies.xml", new XmlReaderSettings());
+
+				DataSet ds = new DataSet();
+
+				ds.ReadXml(xmlFile);
+
+				int i = 0;
+
+				for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+				{
+					var movies = new List<Movie>
+				{
+					new Movie {
+						Title = ds.Tables[0].Rows[i].ItemArray[0].ToString(),
+						Description = ds.Tables[0].Rows[i].ItemArray[1].ToString(),
+						Length = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[2]),
+						Year = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[3]),
+						Genre = ds.Tables[0].Rows[i].ItemArray[4].ToString(),
+						HasSeen = Convert.ToBoolean(ds.Tables[0].Rows[i].ItemArray[5].ToString()),
+						IsFavourite = Convert.ToBoolean(ds.Tables[0].Rows[i].ItemArray[6].ToString())
+					},
+				};
+					context.Movies.AddRange(movies);
+					context.SaveChanges();
+				};
+
+			}
+		}
+	}
 }
