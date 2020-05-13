@@ -9,7 +9,7 @@ class Store {
 	@observable isEdit = false;
 
 	@computed get moviesByTitle() {
-		return this.movies.sort((a, b) => a.title.localeCompare(b.title))
+		return this.movies.slice().sort((a, b) => a.title.localeCompare(b.title))
 	}
 
 	@action loadMovies = async () => {

@@ -28,8 +28,8 @@ const Movie: React.FC<IProps> = ({ movie }) => {
   const { selectMovie, deleteMovie } = store;
 
   return (
-    <Item style={{ paddingTop: "20px"}}>
-        <Item.Image src={poster}></Item.Image>
+    <Item style={{ paddingTop: "20px" }}>
+      <Item.Image src={poster}></Item.Image>
       <Item.Content>
         <Item.Header as="a">{movie.title}</Item.Header>
         <Item.Meta>
@@ -41,12 +41,11 @@ const Movie: React.FC<IProps> = ({ movie }) => {
         </Item.Meta>
         <Item.Meta>
           <span>I've seen this movie: </span>
-          <Icon name="check" />
+          {movie.hasSeen && <Icon name="check" />}
         </Item.Meta>
         <Item.Meta>
-          {console.log(movie.isfavourite)}
           <span>Favourite: </span>
-          <Icon name="check" />
+          {movie.isFavourite && <Icon name="check" />}
         </Item.Meta>
         <Item.Description>{movie.description}</Item.Description>
         <Item.Extra>

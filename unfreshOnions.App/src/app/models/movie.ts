@@ -5,6 +5,6 @@ export interface IMovie {
 	length: number;
 	year: number;
 	genre: string;
-	hasseen: boolean;
-	isfavourite: boolean;
+	hasSeen: boolean;
+	isFavourite: boolean;
 }
