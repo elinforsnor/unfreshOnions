@@ -25,7 +25,7 @@ const Movie: React.FC<IProps> = ({ movie }) => {
   }, [movie.title]);
 
   const store = useContext(Store);
-  const { movies, selectMovie, deleteMovie } = store;
+  const { selectMovie, deleteMovie } = store;
 
   return (
     <Item style={{ paddingTop: "20px"}}>
