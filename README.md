@@ -11,7 +11,7 @@ Make sure Node version >13 and NPM version >6 is installed by executing the foll
 
 The terminal should responde something like:
 
->.13.x.x
+>v.13.x.x
 >
 >v6.x.x
 
