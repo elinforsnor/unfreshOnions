@@ -36,10 +36,12 @@ The response from the terminal should include:
 Clode repository and execute the following:
 > $ cd API
 
+<em>__Note:__ You're editor might warn you that there's something wrong with the dependencies and asks to execute 'dotnet restore'. Allow this!</em>
+
 In the API-folder, make a copy of the <em>appsettings.Development.json</em> and name it <em>appsettings.json</em>. Include the following line:
 > "ConnectionStrings": \{
 >
->		"DefaultConnection": "Data source=\[YOUR_DATABASE_NAME\].db"
+>		"DefaultConnection": "Data source=[YOUR_DATABASE_NAME].db"
 >
 >	\}
 
