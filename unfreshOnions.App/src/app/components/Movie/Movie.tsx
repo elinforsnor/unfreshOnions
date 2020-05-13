@@ -9,19 +9,25 @@ interface IProps {
   movie: IMovie;
 }
 const Movie: React.FC<IProps> = ({ movie }) => {
-  const [poster, setPoster] = useState("");
+  const [poster, setPoster] = useState(
+    "https://placehold.it/198x264&text=Image+Not+Found"
+  );
   const API_KEY = "28259fd1";
 
   useEffect(() => {
-    axios({
-      method: "get",
-      url: `http://www.omdbapi.com/?s=${movie.title}&apikey=${API_KEY}`,
-      responseType: "json"
-    })
-      .then(response => response)
-      .then(response => {
-        setPoster(response.data.Search[0].Poster);
+    const fetch = async () => {
+      const result = await axios({
+        method: "get",
+        url: `http://www.omdbapi.com/?s=${movie.title}&apikey=${API_KEY}`,
+        responseType: "json"
       });
+      try {
+        await setPoster(result.data.Search[0].Poster);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetch();
   }, [movie.title]);
 
   const store = useContext(Store);
