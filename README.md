@@ -37,11 +37,11 @@ Clode repository and execute the following:
 > $ cd API
 
 In the API-folder, make a copy of the <em>appsettings.Development.json</em> and name it <em>appsettings.json</em>. Include the following line:
-> "ConnectionStrings": {
+> "ConnectionStrings": \{
 >
 >		"DefaultConnection": "Data source=\[YOUR_DATABASE_NAME\].db"
 >
->	}
+>	\}
 
 Then, head over to your React-project by executing the following:
 > $ cd ..
@@ -65,7 +65,7 @@ and start the development server by running:
 
 to initiate the server.
 
-Open [http://localhost:3000] to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Contribute
 
