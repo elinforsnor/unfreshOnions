@@ -94,13 +94,13 @@ const MovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
           <Form.Checkbox
             name="hasSeen"
             label="I've seen this movie"
-            checked={movie.hasSeen}
+            value={movie.hasSeen.toString()}
             onChange={handleInputChange}
           />
           <Form.Checkbox
             name="isFavourite"
             label="I's a favourite!"
-            checked={movie.isFavourite}
+            value={movie.isFavourite.toString()}
             onChange={handleInputChange}
           />
           <Button content="Save" icon="check" type="submit" positive />
